@@ -1,4 +1,4 @@
-package database
+package dbase
 
 import (
 	"fmt"
@@ -16,6 +16,9 @@ type Config struct {
 	SSLMode  string
 }
 
+type DataBase struct {
+}
+
 func NewDB(cfg Config) (*sqlx.DB, error) {
 	db, err := sqlx.Open("postgres",
 		fmt.Sprintf("host=%s port=%s user=%s dbname=%s password=%s sslmode=%s",
@@ -29,3 +32,18 @@ func NewDB(cfg Config) (*sqlx.DB, error) {
 	}
 	return db, nil
 }
+
+// func (dbase *DataBase) InitDB() (*sqlx.DB, error) {
+// 	db, err := dbase.NewDB(Config{
+// 		Host:     "localhost",
+// 		Port:     "5436",
+// 		Username: "postgres",
+// 		Password: "almaz.1",
+// 		DBname:   "auth-db",
+// 		SSLMode:  "disable",
+// 	})
+// 	if err != nil {
+// 		log.Fatal(err)
+// 	}
+// 	return db, nil
+// }
